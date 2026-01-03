@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About • StyledUp</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f7fb;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #2d1b36, #3c234a);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* MAIN */
+main {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* SECTIONS */
+.section {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* STACK LIST */
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tech-item {
+    background: #f3f0f8;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>About StyledUp</h1>
+    <p>A learning-driven e-commerce project</p>
+</header>
+
+<main>
+
+    <div class="section">
+        <h2>Project Overview</h2>
+        <p>
+            StyledUp is a full-stack e-commerce web application created as a personal portfolio
+            project. The goal of this project was to design and implement a realistic shopping
+            experience while gaining deeper, hands-on experience with backend web development
+            using Spring Boot.
+        </p>
+        <p>
+            The application supports product browsing, cart management, checkout, and secure
+            payment processing, while following clean architecture principles and best practices.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>About the Developer</h2>
+        <p>
+            I am a final-year Software Engineering student at the University of The West Indies, and StyledUp was built to strengthen
+            my understanding of full-stack application development, particularly within the
+            Java and Spring ecosystem.
+        </p>
+        <p>
+            This project allowed me to explore real-world challenges such as authentication,
+            database design, secure payments, MVC architecture, and frontend–backend integration.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Technology Stack</h2>
+        <p>
+            StyledUp was developed using the following technologies and tools:
+        </p>
+
+        <div class="tech-stack">
+            <div class="tech-item">Java</div>
+            <div class="tech-item">Spring Boot</div>
+            <div class="tech-item">Spring MVC</div>
+            <div class="tech-item">Spring Security</div>
+            <div class="tech-item">Hibernate / JPA</div>
+            <div class="tech-item">Servlets</div>
+            <div class="tech-item">HTML5</div>
+            <div class="tech-item">CSS3</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">Thymeleaf</div>
+            <div class="tech-item">MySQL</div>
+            <div class="tech-item">Stripe API</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Learning Outcomes</h2>
+        <p>
+            Through building StyledUp, I gained practical experience in:
+        </p>
+        <p>
+            • Designing RESTful services and MVC controllers  
+            • Managing authentication and authorization  
+            • Handling file uploads and static resources  
+            • Integrating third-party payment APIs securely  
+            • Building clean, responsive user interfaces  
+        </p>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 StyledUp • Built as a learning and portfolio project
+</footer>
+
+</body>
+</html>

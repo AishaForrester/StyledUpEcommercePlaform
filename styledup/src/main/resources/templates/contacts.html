@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact • StyledUp</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f7fb;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #2d1b36, #3c234a);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* MAIN */
+main {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* TEXT */
+.card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* CONTACT INFO */
+.contact-info div {
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.contact-info span {
+    font-weight: 500;
+}
+
+/* FORM */
+form label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+form button {
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    background: #b470c9;
+    color: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+form button:hover {
+    background: #9d5bb2;
+}
+
+form button:active {
+    transform: scale(0.96);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin: 40px 0 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you</p>
+</header>
+
+<main>
+    <div class="contact-grid">
+
+        <!-- LEFT: INFO -->
+        <div class="card">
+            <h2>Get in Touch</h2>
+            <p>
+                StyledUp is a portfolio and learning project, but feedback, questions,
+                and suggestions are always welcome.
+            </p>
+
+            <div class="contact-info">
+                <div><span>Email:</span> Aisha.Forrester@gmail.com</div>
+                <div><span>GitHub:</span> https://github.com/AishaForrester</div>
+                <div><span>LinkedIn:</span> www.linkedin.com/in/aisha-forrester-b41990276</div>
+                <div><span>Location:</span> Kingston, Jamaica</div>
+            </div>
+
+            <p>
+                We aim to respond to all messages within 24–48 hours.
+            </p>
+        </div>
+
+        <!-- RIGHT: FORM -->
+        <div class="card">
+            <h2>Send a Message</h2>
+
+            <form>  <!--TODO: IMPLEMENT THIS FEATURE-->
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Jane Doe">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="jane@example.com">
+
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your message here..."></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 StyledUp • Portfolio Project
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Elegant font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<title>styled | Dashboard</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    background: #2b2b2b;
+    color: white;
+    padding: 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}
+
+.user-info button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* ---------- PAGE TITLE ---------- */
+h2 {
+    margin: 25px 30px 10px;
+    font-weight: 500;
+}
+
+/* ---------- PRODUCTS GRID ---------- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 20px 30px 40px;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* ---------- IMAGE ---------- */
+.product-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- CARD CONTENT ---------- */
+.product-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.product-content h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.product-content p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.price {
+    font-weight: 600;
+    color: #000;
+}
+
+.stock {
+    font-size: 0.85rem;
+}
+
+/* ---------- BUTTON ---------- */
+.add-btn {
+    margin-top: auto;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    background: #b470c9;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.add-btn:hover {
+    background: #9d5bb2;
+}
+
+.add-btn:active {
+    transform: scale(0.97);
+}
+
+/* ---------- FADE IN ---------- */
+.product-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.product-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Logo font (cursive, elegant) */
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+/* Search bar container */
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Search input */
+.search-container input {
+    width: 60%;
+    max-width: 420px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* Subtle focus effect */
+.search-container input:focus {
+    box-shadow: 0 0 0 2px rgba(180, 112, 201, 0.4);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1 class="logo">StyledUp</h1>
+
+    <!-- TODO: CREATE REAL SEARCH BAR-->
+    <div class="search-container">
+        <input type="text" placeholder="Search styles, brands, products...">
+    </div>
+
+    <div class="user-info">
+        <span th:text="'Welcome, ' + ${currentUser.username}"></span>
+        <a th:href="@{/view-orders}">Orders</a>
+        <a th:href="@{/view-cart}">
+            Cart (<span th:text="${cartItemCount ?: 0}"></span>)
+        </a>
+        <form th:action="@{/logout}">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+
+<h2>Explore</h2>
+
+<div class="products">
+    <div class="product-card" th:each="product : ${products}">
+        
+        <div class="product-image">
+            <img th:src="@{${product.imageUrl}}" alt="Product image">
+        </div>
+
+        <div class="product-content">
+            <h3 th:text="${product.name}"></h3>
+            <p th:text="${product.description}"></p>
+            <p class="price">$<span th:text="${product.price}"></span></p>
+            <p class="stock">Stock: <span th:text="${product.stockQuantity}"></span></p>
+
+            <form th:action="@{/addToCart}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <button type="submit" class="add-btn">Add To Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ---------- JS ---------- -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".product-card");
+
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add("visible");
+        }, index * 80);
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Signup • StyledUp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Elegant fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #f3e7f7, #f9f9f9);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card container */
+.signup-container {
+    background: white;
+    width: 360px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+/* Brand */
+.signup-container h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.signup-container p {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 1.8rem;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #b470c9;
+    box-shadow: 0 0 0 2px rgba(180,112,201,0.25);
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: #b470c9;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+button:hover {
+    background: #9d5bb2;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Error message */
+.error {
+    color: #c0392b;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="signup-container">
+    <h1>StyledUp</h1>
+    <p>Create your account to get started.</p>
+
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <form method="post" action="/signup">
+        <input type="text" name="usernameNew" placeholder="Username" required>
+        <input type="password" name="passwordNew" placeholder="Password" required>
+        <input type="email" name="emailNew" placeholder="Email" required>
+
+        <select name="role" required>
+            <option value="">Select account type</option>
+            <option value="BUYER">Buyer</option>
+            <option value="SELLER">Seller</option>
+        </select>
+
+        <p>Already have an account? <a href="/login">Login Here</a></p>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+</body>
+</html>

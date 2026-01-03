@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyledUp • Fashion Boutique</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f7fb;
+    color: #333;
+}
+
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #b470c9;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}*/
+
+/* ===== MAIN ===== */
+main {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* HERO */
+#home {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#home h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#home p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ===== PRODUCTS ===== */
+#products h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    
+}
+
+.product-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 15px 0 5px;
+    font-size: 1.1rem;
+}
+
+.product-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.product-card .price {
+    font-weight: 500;
+    color: #333;
+    margin: 8px 0;
+}
+
+/* BUTTON */
+.product-card a {
+    display: inline-block;
+    margin: 15px 0 20px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: #b470c9;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.product-card a:hover {
+    background: #9d5bb2;
+}
+
+
+
+.product-card a:active {
+    transform: scale(0.96);
+}
+
+/*===Added From buyerDashboard===*/
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}
+
+.user-info button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Logo font (cursive, elegant) */
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+/* Search bar container */
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Search input */
+.search-container input {
+    width: 60%;
+    max-width: 420px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* Subtle focus effect */
+.search-container input:focus {
+    box-shadow: 0 0 0 2px rgba(180, 112, 201, 0.4);
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    background: #2b2b2b;
+    color: white;
+    padding: 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+
+/* ===== FOOTER ===== */
+footer {
+    background: #2d1b36;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    margin-top: 80px;
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="header">
+    <h1 class="logo">StyledUp</h1>
+
+    <!-- TODO: CREATE A FUNCTIONAL SEARCHBAR THAT IS QUERIES THE DATABASE -->
+    <div class="search-container">
+        <input type="text" placeholder="Search styles, brands, products...">
+    </div>
+
+    <div class="user-info">
+        <a href="/login">Login</a>
+        <a href="/login">Cart (0)</a>
+        <a href="/about">About</a>  
+        <a href="/contacts">Contact</a>  
+    </div>
+</div>
+
+
+<main>
+    <section id="home">
+        <h2>Welcome to StyledUp</h2>
+        <p>Curated fashion pieces designed to elevate your everyday style.</p>
+    </section>
+
+    <section id="products">
+        <h2>Featured Collection</h2>
+        <div class="products">
+            <div class="product-card" th:each="product : ${products}">
+                <img th:src="@{${product.imageUrl}}" alt="Product image">
+                <h3 th:text="${product.name}">Product Name</h3>
+                <p th:text="${product.description}">Description</p>
+                <p class="price">$<span th:text="${product.price}">0.00</span></p>
+                <a href="login">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 StyledUp. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

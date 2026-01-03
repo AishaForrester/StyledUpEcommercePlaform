@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation • StyledUp</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #f7f4fa, #fdfdfd);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* MAIN CARD */
+.confirmation-card {
+    background: white;
+    max-width: 800px;
+    width: 90%;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* TITLE */
+.confirmation-card h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* SUBTEXT */
+.confirmation-card .subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* ORDER SUMMARY */
+.order-summary {
+    background: #f8f8fb;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.order-summary h3 {
+    font-family: "Playfair Display", serif;
+    margin-bottom: 15px;
+}
+
+.order-summary ul {
+    list-style: none;
+}
+
+.order-summary li {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+/* ORDER ITEMS */
+.order-items {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+.order-item img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.order-item h4 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.order-item p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* FOOTER TEXT */
+.confirmation-card .email-note {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* BUTTON */
+.home-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 25px;
+    background: #b470c9;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.home-btn:hover {
+    background: #9d5bb2;
+}
+
+.home-btn:active {
+    transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<div class="confirmation-card">
+    <h1>Order Confirmed 🎉</h1>
+    <p class="subtitle">
+        Thank you, <strong th:text="${currentUser.username}"></strong>!  
+        Your order has been successfully processed.
+    </p>
+
+    <div class="order-summary">
+        <h3>Order Details</h3>
+        <ul>
+            <li>Total Amount: <strong>$<span th:text="${totalPrice}">0.00</span></strong></li>
+            <li>Items Purchased: <span th:text="${totalItemCount}">0</span></li>
+            <li>Order Date: <span th:text="${orderDate}"></span></li>
+        </ul>
+    </div>
+
+    <div class="order-items">
+        <div class="order-item" th:each="item : ${orderItems}">
+            <img th:src="@{${item.product.imageUrl}}" alt="Product image">
+            <div>
+                <h4 th:text="${item.product.name}"></h4>
+                <p th:text="'Quantity: ' + ${item.quantity}"></p>
+                <p th:text="'Price: $' + ${item.product.price}"></p>
+            </div>
+        </div>
+    </div>
+
+    <p class="email-note">
+        A confirmation email has been sent to you with your receipt.
+    </p>
+
+    <a href="/dashboardBuyer" class="home-btn">Return to Home</a>
+</div>
+
+</body>
+</html>

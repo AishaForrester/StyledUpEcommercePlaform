@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart • StyledUp</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f6f6f8;
+    color: #333;
+}
+
+/* HEADER */
+.header {
+    background: #1f1f1f;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.user-info span,
+.user-info a {
+    margin-left: 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 40px;
+}
+
+/* LEFT — CART */
+.cartInfo {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.cartInfo h1 {
+    font-family: "Playfair Display", serif;
+    margin-bottom: 25px;
+}
+
+/* CART ITEM */
+.cart-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-card:last-child {
+    border-bottom: none;
+}
+
+.cart-card img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cart-card h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.cart-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.cart-card span {
+    font-weight: 500;
+    color: #333;
+}
+
+/* RIGHT — CHECKOUT */
+.checkOutInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* CHECKOUT CARD */
+.checkout,
+.relatedItemsList {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.checkout h3,
+.relatedItemsList h3 {
+    font-family: "Playfair Display", serif;
+    margin-bottom: 15px;
+}
+
+.checkout p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: #b470c9;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+button:hover {
+    background: #9d5bb2;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* RELATED ITEMS PLACEHOLDER */
+.relatedItemsList p {
+    font-size: 0.85rem;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>StyledUp</h1>
+    <div class="user-info">
+        <span th:text="'Welcome, ' + ${currentUser.username}"></span>
+        <a th:href="@{/view-orders}">Orders</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- LEFT -->
+    <div class="cartInfo">
+        <h1>Shopping Cart</h1>
+
+        <div class="cart-card" th:each="cartItem : ${cartItems}">
+            <img th:src="@{${cartItem.product.imageUrl}}" alt="Product image">
+
+            <div>
+                <h3 th:text="${cartItem.product.name}"></h3>
+                <p th:text="${cartItem.product.description}"></p>
+                <p>$<span th:text="${cartItem.product.price}"></span></p>
+                <p>Quantity: <span th:text="${cartItem.quantity}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="checkOutInfo">
+        <div class="checkout">
+            <h3>Order Summary</h3>
+            <p>
+                Subtotal (<span th:text="${totalItemCount}"></span> items):
+                <strong>$<span th:text="${totalPrice}"></span></strong>
+            </p>
+
+            <form th:action="@{/checkout}" method="post">
+                <button type="submit">Proceed to Checkout</button>
+            </form>
+        </div>
+
+        <div class="relatedItemsList">
+            <h3>You may also like</h3>
+            <p>Curated picks just for you will appear here ✨</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

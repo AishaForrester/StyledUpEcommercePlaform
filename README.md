@@ -86,6 +86,10 @@ Check out the app here: [StyledUp on Replit](https://styled-up-ecommerce-plaform
 - Enhance UI/UX
 
 ---
+## Certification
+Board Infinity Building Applications with Spring Boot and MVC Architecture
+
+---
 
 ## Getting Started
 
